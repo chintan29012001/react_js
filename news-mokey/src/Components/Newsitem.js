@@ -8,9 +8,9 @@ export class Newsitem extends Component {
         let {title,description,image,storyUrl}=this.props;
         return (
                 
-                    <div className="card d-md-flex flex-column align-items-center " style={{height:"55vh",margin:"2%"}}>
+                    <div className="card d-md-flex flex-column align-items-center " style={{margin:"2%"}}>
                         <div className="card d-flex flex-direction-column align-items-center " style={{height:"40%",maxWidth:"90%",margin:"3%",padding:"1%"}}>
-                            <img src={image} className="card-img-top" style={{maxWidth:"100%",maxHeight:"100%"}} alt="..." />
+                            <img src={image?image:"https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/333200/333221.6.jpg"} className="card-img-top" style={{maxWidth:"100%",maxHeight:"100%"}} alt="..." />
                         </div>
                         <div className='flex-fill d-flex flex-column align-items-center' >
                             <div className="card-body d-flex flex-column align-items-center flex-grow-1" style={{textAlign:"center"}} >

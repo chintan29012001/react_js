@@ -8,7 +8,7 @@ export class News extends Component {
     async componentDidMount()
     {
         this.setState({loading:true});
-        let news_api=await fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page}&pageSize=${this.props.itemsPerPage}`);
+        let news_api=await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page}&pageSize=${this.props.itemsPerPage}`);
         
         let news_response=await news_api.json()
         console.log(news_response);
@@ -32,7 +32,7 @@ export class News extends Component {
         if(this.state.page+1<=totalPages)
         {
             this.setState({loading:true});
-            let news_api=await fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page+1}&pageSize=${this.props.itemsPerPage}`);
+            let news_api=await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page+1}&pageSize=${this.props.itemsPerPage}`);
             console.log("ne");
             let news_response=await news_api.json()
             console.log(news_response);
@@ -45,7 +45,7 @@ export class News extends Component {
         if(this.state.page-1>=1)
         {
             this.setState({loading:true});
-            let news_api=await fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page-1}&pageSize=${this.props.itemsPerPage}`);
+            let news_api=await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page-1}&pageSize=${this.props.itemsPerPage}`);
             
             let news_response=await news_api.json()
             // console.log(news_response);
