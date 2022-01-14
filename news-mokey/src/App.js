@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <>
       <Navbar></Navbar>
-      <News></News>
+      <News itemsPerPage={6} />
         
       </>
     )

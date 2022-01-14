@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class Newsitem extends Component {
     short(title,len) {
-        return title.length<50?title:title.slice(0,len)+"..."
+        return title?title.length<len?title:title.slice(0,len):"demo"
     };
     render() {
         let {title,description,image,storyUrl}=this.props;
