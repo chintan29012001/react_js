@@ -44,13 +44,13 @@ export default function TextForm(props) {
         <textarea className="form-control" id="mybox" rows="15" onChange={onUpdate} onClick={newText} value={text} style={{color:(props.mode==='light')?'black':'white', backgroundColor:(props.mode==='light')?'white':'#000033'}} ></textarea>
        
         </div>
-        <button className='btn my-3' style={{backgroundColor:(props.mode==='dark')?'#7cfc00':"#1e90ff",color:(props.mode==='light')?'white':'black'}} onClick={upperCase}>Convert to Uppercase</button>
-        <button className='btn  my-3 mx-2' style={{backgroundColor:(props.mode==='dark')?'#7cfc00':"#1e90ff",color:(props.mode==='light')?'white':'black'}} onClick={lowerCase}>Convert to Lowercase</button>
-        <button className='btn  my-3 ' style={{backgroundColor:(props.mode==='dark')?'#7cfc00':"#1e90ff",color:(props.mode==='light')?'white':'black'}} onClick={rev}>Reverse Text</button>
+        <button className='btn my-3' disabled={text.length===0}  style={{backgroundColor:(props.mode==='dark')?'#7cfc00':"#1e90ff",color:(props.mode==='light')?'white':'black'}} onClick={upperCase}>Convert to Uppercase</button>
+        <button className='btn  my-3 mx-2' disabled={text.length===0} style={{backgroundColor:(props.mode==='dark')?'#7cfc00':"#1e90ff",color:(props.mode==='light')?'white':'black'}} onClick={lowerCase}>Convert to Lowercase</button>
+        <button className='btn  my-3 'disabled={text.length===0} style={{backgroundColor:(props.mode==='dark')?'#7cfc00':"#1e90ff",color:(props.mode==='light')?'white':'black'}} onClick={rev}>Reverse Text</button>
     </div>
     <div className="container" style={{color:(props.mode==='light')?'black':'white'}}>
         <h2>Your text summary</h2>
-        <p>{text.trim()===""?0:text.trim().split(" ").length} Words and {text.length} characters </p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Words and {text.length} characters </p>
     </div>
     </>
     

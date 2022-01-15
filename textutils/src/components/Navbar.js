@@ -19,7 +19,7 @@ export default function Navbar(props) {
     <div className="collapse navbar-collapse " id="navbarNavDropdown"  >
       <ul className="navbar-nav d-flex flex-grow-1" >
         <li className="nav-item" >
-          <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+          <Link className="nav-link" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item" >
           <Link className="nav-link" to="/about">About</Link>
