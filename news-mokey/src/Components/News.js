@@ -34,8 +34,9 @@ export class News extends Component {
   async componentDidMount() {
     await this.updateNews(1)
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    document.title=`News Monkey-${this.props.category}`
     this.state = {
       articles: this.articles,
       loading: false,
