@@ -5,19 +5,34 @@ import Spinner from "./Spinner";
 export class News extends Component {
   articles = [];
 
-  async componentDidMount() {
+  async updateNews(page)
+  {
+    // console.log(this.state.page);
     this.setState({ loading: true });
-    let news_api = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${this.state.page}&pageSize=${this.props.itemsPerPage}`
+    let url= `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=${
+      this.props.category
+    }&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${
+      page
+    }&pageSize=${this.props.itemsPerPage}`
+    // console.log(url);
+    let news_api = await fetch( url
     );
-
+    // console.log(this.state.page);
     let news_response = await news_api.json();
-    console.log(news_response);
+    // console.log(news_response);
+    // this.setState({ page: this.state.page + 1 })
     this.setState({
       articles: news_response.articles,
       totalArticles: news_response.totalResults,
-      loading: false,
+      page:page,
+      loading: false
     });
+
+  }
+  async componentDidMount() {
+    await this.updateNews(1)
   }
   constructor() {
     super();
@@ -29,54 +44,21 @@ export class News extends Component {
     };
   }
   handleNextClick = async () => {
-    let totalPages = Math.ceil(
-      this.state.totalArticles / this.props.itemsPerPage
-    );
-    console.log(totalPages);
-    if (this.state.page + 1 <= totalPages) {
-      this.setState({ loading: true });
-      let news_api = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=${
-          this.props.country
-        }&category=${
-          this.props.category
-        }&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${
-          this.state.page + 1
-        }&pageSize=${this.props.itemsPerPage}`
-      );
-      console.log("ne");
-      let news_response = await news_api.json();
-      console.log(news_response);
-      // this.setState({ page: this.state.page + 1 })
-      this.setState({
-        articles: news_response.articles,
-        page: this.state.page + 1,
-        loading: false,
-      });
-    }
+    // console.log(totalPages);
+        // this.setState({page: this.state.page + 1,loading:true});
+        await this.updateNews(this.state.page + 1);
+        // this.setState({ loading: false });
+      
   };
   handlePrevClick = async () => {
-    if (this.state.page - 1 >= 1) {
-      this.setState({ loading: true });
-      let news_api = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=${
-          this.props.country
-        }&category=${
-          this.props.category
-        }&apiKey=7a3c2b747e744da78b5bd14e40cfa428&page=${
-          this.state.page - 1
-        }&pageSize=${this.props.itemsPerPage}`
-      );
-
-      let news_response = await news_api.json();
-      // console.log(news_response);
-      // this.setState({ page: this.state.page + 1 })
-      this.setState({
-        articles: news_response.articles,
-        page: this.state.page - 1,
-        loading: false,
-      });
-    }
+    
+      // this.setState({
+        
+      //   loading:true,
+      // });
+      await this.updateNews(this.state.page - 1);
+      // this.setState({ loading: false });
+  
   };
 
   render() {
