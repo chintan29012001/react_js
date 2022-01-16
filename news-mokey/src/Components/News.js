@@ -5,7 +5,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 export class News extends Component {
   articles = [];
-
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   async updateNews(page)
   {
     // console.log(this.state.page);
@@ -37,7 +39,7 @@ export class News extends Component {
   }
   constructor(props) {
     super(props);
-    document.title=`News Monkey-${this.props.category}`
+    document.title=`News Monkey - ${this.capitalizeFirstLetter(this.props.category)}`
     this.state = {
       articles: this.articles,
       loading: true,
@@ -53,7 +55,7 @@ export class News extends Component {
   render() {
     return (
       <div className="text-center">
-        <h1>Top Headlines - {this.props.category}</h1>
+        <h1>Top Headlines - {this.capitalizeFirstLetter(this.props.category)}</h1>
         {this.state.loading&&<Spinner/>}
         <InfiniteScroll
           dataLength={this.state.articles.length}
