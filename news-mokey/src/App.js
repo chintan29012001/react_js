@@ -1,27 +1,19 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
-class App extends Component {
-  state = {
-    progress: 10,
-  };
-  setProgress=(progress)=> {
-    this.setState({ progress: progress })
-  }
-  news_api_key=process.env.REACT_APP_NEWS_API_KEY
-  
 
-  render() {
-    // console.log(this.news_api_key);
+const App=()=> {
+  const [progress, setProgress] = useState(10);
+  let news_api_key=process.env.REACT_APP_NEWS_API_KEY
     return (
       <>
         <Router>
           <LoadingBar
             color="#f11946"
             height={3}
-            progress={this.state.progress}
+            progress={progress}
           />
           <Navbar />
           <Routes>
@@ -30,10 +22,10 @@ class App extends Component {
               path="/business"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="business"
                   key="business"
                 />
@@ -44,10 +36,10 @@ class App extends Component {
               path="/entertainment"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="entertainment"
                   key="entertainment"
                 />
@@ -58,10 +50,10 @@ class App extends Component {
               path="/"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="general"
                   key="general"
                 />
@@ -72,10 +64,10 @@ class App extends Component {
               path="/health"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="health"
                   key="health"
                 />
@@ -86,10 +78,10 @@ class App extends Component {
               path="/science"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="science"
                   key="science"
                 />
@@ -100,10 +92,10 @@ class App extends Component {
               path="/sports"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="sports"
                   key="sports"
                 />
@@ -114,10 +106,10 @@ class App extends Component {
               path="/technology"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgress}
                   itemsPerPage={6}
                   country="in"
-                  news_api_key={this.news_api_key}
+                  news_api_key={news_api_key}
                   category="technology"
                   key="technology"
                 />
@@ -127,7 +119,7 @@ class App extends Component {
         </Router>
       </>
     );
-  }
+  
 }
 
 export default App;

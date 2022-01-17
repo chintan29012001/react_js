@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-export class Newsitem extends Component {
-    extracter(text)
+const Newsitem=(props)=> {
+    const extracter=(text)=>
     {
         let x=text.indexOf("-")
         if(x!==-1)
@@ -12,12 +12,12 @@ export class Newsitem extends Component {
 
     }
 
-  nullCheck(title) {
+    const nullCheck=(title)=> {
       
     return title ? title : "demo";
   }
-  render() {
-    let { title, description, image, storyUrl, author,date,source } = this.props;
+  
+    let { title, description, image, storyUrl, author,date,source } = props;
     return (
       <div
         className="card d-md-flex flex-column align-items-center "
@@ -50,9 +50,9 @@ export class Newsitem extends Component {
             className="card-body d-flex flex-column align-items-center flex-grow-1"
             style={{ textAlign: "center" }}
           >
-            <h5 className="card-title">{this.extracter(this.nullCheck(title))} <span className="badge rounded-pill bg-dark">{source}</span> </h5>
+            <h5 className="card-title">{extracter(nullCheck(title))} <span className="badge rounded-pill bg-dark">{source}</span> </h5>
             
-            <p className="card-text flex-grow-1">{this.nullCheck(description)}</p>
+            <p className="card-text flex-grow-1">{nullCheck(description)}</p>
             <p className="card-text"><small className="text-muted">By {author?author:"unknown"} - {new Date(date).toLocaleString()}</small></p>
           </div>
           <div className="card-body flex-column flex-justify-content-center mt-auto">
@@ -68,7 +68,7 @@ export class Newsitem extends Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 export default Newsitem;
