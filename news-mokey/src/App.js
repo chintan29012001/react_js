@@ -2,12 +2,25 @@ import React, { Component } from "react";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 class App extends Component {
+  state = {
+    progress: 10,
+  };
+  setProgress=(progress)=> {
+    this.setState({ progress: progress })
+  }
   
+
   render() {
     return (
       <>
         <Router>
+          <LoadingBar
+            color="#f11946"
+            height={3}
+            progress={this.state.progress}
+          />
           <Navbar />
           <Routes>
             <Route
@@ -15,6 +28,7 @@ class App extends Component {
               path="/business"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="business"
@@ -27,6 +41,7 @@ class App extends Component {
               path="/entertainment"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="entertainment"
@@ -39,6 +54,7 @@ class App extends Component {
               path="/"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="general"
@@ -51,6 +67,7 @@ class App extends Component {
               path="/health"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="health"
@@ -63,6 +80,7 @@ class App extends Component {
               path="/science"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="science"
@@ -75,6 +93,7 @@ class App extends Component {
               path="/sports"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="sports"
@@ -87,6 +106,7 @@ class App extends Component {
               path="/technology"
               element={
                 <News
+                  setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
                   category="technology"

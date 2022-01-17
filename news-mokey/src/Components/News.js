@@ -3,6 +3,7 @@ import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+
 export class News extends Component {
   articles = [];
   capitalizeFirstLetter(string) {
@@ -22,8 +23,10 @@ export class News extends Component {
     // console.log(url);
     let news_api = await fetch( url
     );
+    
     // console.log(this.state.page);
     let news_response = await news_api.json();
+    // this.props.setProgress(40)
     // console.log(news_response);
     // this.setState({ page: this.state.page + 1 })
     this.setState({
@@ -31,14 +34,18 @@ export class News extends Component {
       totalArticles: news_response.totalResults,
       page:page,
     });
+    
 
   }
   async componentDidMount() {
+    this.props.setProgress(60)
     await this.updateNews(1)
+    this.props.setProgress(100)
     this.setState({loading:false})
   }
   constructor(props) {
     super(props);
+    // this.handler = this.handler.bind(this);
     document.title=`News Monkey - ${this.capitalizeFirstLetter(this.props.category)}`
     this.state = {
       articles: this.articles,

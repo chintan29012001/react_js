@@ -4,7 +4,7 @@ export class Newsitem extends Component {
     extracter(text)
     {
         let x=text.indexOf("-")
-        if(x!=-1)
+        if(x!==-1)
         {
             return text.slice(0,x)
         }
