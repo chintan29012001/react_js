@@ -10,9 +10,11 @@ class App extends Component {
   setProgress=(progress)=> {
     this.setState({ progress: progress })
   }
+  news_api_key=process.env.REACT_APP_NEWS_API_KEY
   
 
   render() {
+    // console.log(this.news_api_key);
     return (
       <>
         <Router>
@@ -31,6 +33,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="business"
                   key="business"
                 />
@@ -44,6 +47,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="entertainment"
                   key="entertainment"
                 />
@@ -57,6 +61,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="general"
                   key="general"
                 />
@@ -70,6 +75,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="health"
                   key="health"
                 />
@@ -83,6 +89,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="science"
                   key="science"
                 />
@@ -96,6 +103,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="sports"
                   key="sports"
                 />
@@ -109,6 +117,7 @@ class App extends Component {
                   setProgress={this.setProgress}
                   itemsPerPage={6}
                   country="in"
+                  news_api_key={this.news_api_key}
                   category="technology"
                   key="technology"
                 />
