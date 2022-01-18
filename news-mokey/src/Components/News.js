@@ -32,7 +32,8 @@ const News =(props)=> {
     
     
     let news_response = await news_api.json();
-    setArticles(articles.concat(news_response.articles))
+    if(!(articles in news_response))
+      setArticles(articles.concat(news_response.articles))
     setTotalArticles(news_response.totalResults)
     setPage(page)
      
@@ -55,8 +56,6 @@ const News =(props)=> {
   {
     await updateNews(page+1);
   }
-
-  
     return (
       <div className="text-center" >
         <h1 style={{marginTop:"10vh",padding:"5%"}}>Top Headlines - {capitalizeFirstLetter(props.category)}</h1>
