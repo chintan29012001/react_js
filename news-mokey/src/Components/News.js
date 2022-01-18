@@ -9,7 +9,7 @@ const News =(props)=> {
   const capitalizeFirstLetter=(string)=> {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  document.title=`News Monkey - ${capitalizeFirstLetter(props.category)}`
+  
   
   const [articles, setArticles] = useState([])
   const [totalArticles, setTotalArticles] = useState(0)
@@ -45,8 +45,9 @@ const News =(props)=> {
       props.setProgress(100);
   }
   useEffect(async() => {
+      document.title=`News Monkey - ${capitalizeFirstLetter(props.category)}`
       await f();
-      console.log("ended use effect");
+      // console.log("ended use effect");
   }, [])
   
   
@@ -57,8 +58,8 @@ const News =(props)=> {
 
   
     return (
-      <div className="text-center">
-        <h1>Top Headlines - {capitalizeFirstLetter(props.category)}</h1>
+      <div className="text-center" >
+        <h1 style={{marginTop:"10vh",padding:"5%"}}>Top Headlines - {capitalizeFirstLetter(props.category)}</h1>
         {loading&&<Spinner/>}
         <InfiniteScroll
           dataLength={articles.length}
